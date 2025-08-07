@@ -209,8 +209,13 @@
         </div>
     </nav>
 
+    <!-- Module Navigation Toggle -->
+    <div class="module-nav-toggle" id="moduleNavToggle">
+        <span style="font-size: 1.5rem; color: #ffffff;">📚</span>
+    </div>
+
     <!-- Module Navigation -->
-    <div class="module-nav">
+    <div class="module-nav" id="moduleNav">
         <div class="module-nav-container">
             <h3 class="module-nav-title">STEM Lab Modules</h3>
             <div class="module-links">
@@ -218,9 +223,17 @@
                     <span class="module-icon">🎬</span>
                     <span class="module-text">Module 1: Creator Mindset</span>
                 </a>
-                <a href="new-module.html" class="module-link">
+                <a href="day1-mod2.html" class="module-link">
                     <span class="module-icon">📱</span>
                     <span class="module-text">Module 2: Content Creation</span>
+                </a>
+                <a href="day2-mod3.html" class="module-link">
+                    <span class="module-icon">📹</span>
+                    <span class="module-text">Module 3: iPhone Videography</span>
+                </a>
+                <a href="day2-mod4.html" class="module-link">
+                    <span class="module-icon">🎬</span>
+                    <span class="module-text">Module 4: Production Projects</span>
                 </a>
                 <a href="day3-mod5.html" class="module-link">
                     <span class="module-icon">🏆</span>
@@ -489,6 +502,125 @@
                 if (link.getAttribute('href') === `#${current}`) {
                     link.classList.add('active');
                 }
+            });
+        });
+
+        // Module Navigation Toggle Functionality
+        const moduleNav = document.getElementById('moduleNav');
+        const moduleNavToggle = document.getElementById('moduleNavToggle');
+        let isModuleNavVisible = true;
+
+        // Toggle module navigation
+        moduleNavToggle.addEventListener('click', () => {
+            if (isModuleNavVisible) {
+                moduleNav.classList.add('collapsed');
+                moduleNavToggle.innerHTML = '<span style="font-size: 1.5rem; color: #ffffff;">📚</span>';
+            } else {
+                moduleNav.classList.remove('collapsed');
+                moduleNavToggle.innerHTML = '<span style="font-size: 1.5rem; color: #ffffff;">✕</span>';
+            }
+            isModuleNavVisible = !isModuleNavVisible;
+        });
+
+        // Hide module navigation on scroll (after first section)
+        window.addEventListener('scroll', () => {
+            const heroSection = document.getElementById('hero');
+            if (heroSection) {
+                const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+                const scrollPosition = window.pageYOffset + window.innerHeight;
+                
+                if (scrollPosition > heroBottom + 100) {
+                    // Hide both nav and toggle when scrolled past hero
+                    moduleNav.classList.add('collapsed');
+                    moduleNavToggle.classList.add('hidden');
+                    isModuleNavVisible = false;
+                } else {
+                    // Show toggle when back in hero section
+                    moduleNavToggle.classList.remove('hidden');
+                }
+            }
+        });
+
+        // Arrow Key Navigation
+        let isNavigating = false;
+        const sections = ['hero', 'why-creators', 'real-creators', 'consumer-creator', 'storytelling', 'journey'];
+        let currentSectionIndex = 0;
+
+        // Function to navigate to section
+        function navigateToSection(index) {
+            if (index >= 0 && index < sections.length) {
+                const targetSection = document.getElementById(sections[index]);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    currentSectionIndex = index;
+                }
+            }
+        }
+
+        // Arrow key event listener
+        document.addEventListener('keydown', (e) => {
+            if (isNavigating) return; // Prevent rapid navigation
+            
+            switch(e.key) {
+                case 'ArrowDown':
+                case 'ArrowRight':
+                    e.preventDefault();
+                    isNavigating = true;
+                    navigateToSection(currentSectionIndex + 1);
+                    setTimeout(() => { isNavigating = false; }, 1000);
+                    break;
+                case 'ArrowUp':
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    isNavigating = true;
+                    navigateToSection(currentSectionIndex - 1);
+                    setTimeout(() => { isNavigating = false; }, 1000);
+                    break;
+                case 'Home':
+                    e.preventDefault();
+                    isNavigating = true;
+                    navigateToSection(0);
+                    setTimeout(() => { isNavigating = false; }, 1000);
+                    break;
+                case 'End':
+                    e.preventDefault();
+                    isNavigating = true;
+                    navigateToSection(sections.length - 1);
+                    setTimeout(() => { isNavigating = false; }, 1000);
+                    break;
+            }
+        });
+
+        // Update current section index on scroll
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.pageYOffset + window.innerHeight / 2;
+            
+            sections.forEach((sectionId, index) => {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
+                        currentSectionIndex = index;
+                    }
+                }
+            });
+        });
+
+        // Enhanced hover effects for better polish
+        document.querySelectorAll('.visual-card, .stat-item, .flow-step').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-15px) scale(1.05)';
+                card.style.boxShadow = '0 25px 50px rgba(0, 0, 0, 0.4), 0 0 0 3px rgba(255, 255, 255, 0.4)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+                card.style.boxShadow = '';
             });
         });
     </script>
