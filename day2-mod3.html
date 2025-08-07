@@ -156,8 +156,12 @@
                     <span class="module-text">Module 4: Production Projects</span>
                 </a>
                 <a href="day3-mod5.html" class="module-link">
+                    <span class="module-icon">🚀</span>
+                    <span class="module-text">Module 5: Content Strategy & Launch</span>
+                </a>
+                <a href="day4-mod6.html" class="module-link">
                     <span class="module-icon">🏆</span>
-                    <span class="module-text">Module 5 & 6: Strategy & Showcase</span>
+                    <span class="module-text">Module 6: Boss Creator Showcase</span>
                 </a>
             </div>
         </div>
@@ -425,6 +429,11 @@
                 } else {
                     // Show toggle when back in hero section
                     moduleNavToggle.classList.remove('hidden');
+                    // Reset module nav to visible when back at top
+                    if (!isModuleNavVisible) {
+                        moduleNav.classList.remove('collapsed');
+                        isModuleNavVisible = true;
+                    }
                 }
             }
         });
