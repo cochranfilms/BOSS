@@ -211,24 +211,7 @@
             50% { transform: scale(1.05); }
         }
 
-        .skip-button {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
 
-        .skip-button:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.05);
-        }
 
         @media (max-width: 768px) {
             .intro-container {
@@ -260,11 +243,7 @@
                 min-width: 120px;
             }
             
-            .skip-button {
-                top: 1rem;
-                right: 1rem;
-                font-size: 0.9rem;
-            }
+
         }
     </style>
 </head>
@@ -272,7 +251,7 @@
     <div class="intro-container">
         <div class="intro-background"></div>
         
-        <button class="skip-button" onclick="enterWorkshop()">Skip Intro</button>
+
         
         <div class="intro-content">
             <img src="finalnewbossss-white.png" alt="BOSS Learning Academy" class="intro-logo">
@@ -354,6 +333,14 @@
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 enterWorkshop();
+            } else if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                // Navigate to first module (main-content.html)
+                window.location.href = 'main-content.html';
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                // Navigate to last module (day4-mod6.html)
+                window.location.href = 'day4-mod6.html';
             }
         });
 
