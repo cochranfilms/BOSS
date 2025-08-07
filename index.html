@@ -109,15 +109,8 @@
             z-index: 10;
             text-align: center;
             width: 100%;
-            max-width: 1400px;
-            color: white;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 30px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
             height: 100vh;
+            color: white;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -148,40 +141,20 @@
         }
 
         .video-container {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2));
-            border-radius: 25px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            backdrop-filter: blur(20px);
-            border: 2px solid rgba(255, 255, 255, 0.15);
             width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-            position: relative;
-            overflow: hidden;
             flex: 1;
-        }
-
-        .video-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
-            pointer-events: none;
         }
 
 
 
         .video-player {
             width: 100%;
-            max-width: 90vw;
-            height: 60vh;
+            max-width: 56.25vh; /* 9:16 ratio width */
+            height: 100vh;
             border-radius: 20px;
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
             border: 2px solid rgba(255, 255, 255, 0.1);
@@ -204,11 +177,15 @@
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 1rem;
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
             box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
             animation: buttonPulse 2s ease-in-out infinite;
             letter-spacing: 1px;
             text-transform: uppercase;
+            z-index: 20;
         }
 
         .enter-button:hover {
@@ -241,13 +218,14 @@
             }
             
             .video-player {
-                height: 50vh;
-                max-width: 95vw;
+                height: 100vh;
+                max-width: 56.25vh;
             }
             
             .enter-button {
                 padding: 0.8rem 2rem;
                 font-size: 1rem;
+                bottom: 1rem;
             }
         }
     </style>
