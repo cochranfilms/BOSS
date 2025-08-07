@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 2 Test</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Debug styles */
+        .debug-outline {
+            border: 2px solid red !important;
+        }
+        .debug-bg {
+            background: rgba(255, 0, 0, 0.1) !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <!-- Slide 2: Why Creators Matter -->
+        <div class="slide active" id="slide2">
+            <div class="slide-content debug-outline">
+                <div class="header debug-bg">
+                    <div class="logo-left">
+                        <img src="finalnewbossss-white.png" alt="BOSS Learning Academy" class="logo">
+                    </div>
+                    <div class="logo-right">
+                        <img src="CCAlogo.png" alt="Course Creator Academy" class="logo">
+                    </div>
+                </div>
+                
+                <div class="main-content debug-bg">
+                    <h2 class="section-title">Why Creators Matter</h2>
+                    
+                    <div class="importance-highlight debug-bg">
+                        <h3 class="importance-title">The Importance of Digital Creators in Today's World</h3>
+                        <p class="importance-desc">Digital creators are the new cultural architects, shaping how we learn, connect, and consume content in the 21st century.</p>
+                    </div>
+                    
+                    <div class="stats-display debug-bg">
+                        <div class="stat-item">
+                            <div class="stat-number">2.5B+</div>
+                            <div class="stat-label">Social Media Users</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">$100B+</div>
+                            <div class="stat-label">Creator Economy</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50M+</div>
+                            <div class="stat-label">Content Creators</div>
+                        </div>
+                    </div>
+
+                    <div class="visual-grid debug-bg">
+                        <div class="visual-card">
+                            <div class="visual-icon">🌍</div>
+                            <h3 class="visual-title">Global Impact</h3>
+                            <p class="visual-desc">Shape culture and drive innovation worldwide.</p>
+                        </div>
+                        <div class="visual-card">
+                            <div class="visual-icon">💡</div>
+                            <h3 class="visual-title">Innovation</h3>
+                            <p class="visual-desc">Lead new technologies and storytelling methods.</p>
+                        </div>
+                        <div class="visual-card">
+                            <div class="visual-icon">🎯</div>
+                            <h3 class="visual-title">Connection</h3>
+                            <p class="visual-desc">Build authentic communities and meaningful relationships.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-indicator">
+        <span id="current-slide">2</span> / <span id="total-slides">1</span>
+    </div>
+
+    <script>
+        // Debug info
+        console.log('Slide 2 Test Loaded');
+        
+        // Add debug info to page
+        setTimeout(() => {
+            const slideContent = document.querySelector('.slide-content');
+            const mainContent = document.querySelector('.main-content');
+            const visualGrid = document.querySelector('.visual-grid');
+            
+            console.log('Slide Content Height:', slideContent.offsetHeight);
+            console.log('Main Content Height:', mainContent.offsetHeight);
+            console.log('Visual Grid Height:', visualGrid.offsetHeight);
+            
+            // Add debug info to page
+            const debugInfo = document.createElement('div');
+            debugInfo.style.cssText = `
+                position: fixed;
+                top: 10px;
+                left: 10px;
+                background: rgba(0,0,0,0.8);
+                color: white;
+                padding: 10px;
+                font-family: monospace;
+                z-index: 9999;
+            `;
+            debugInfo.innerHTML = `
+                Slide Content: ${slideContent.offsetHeight}px<br>
+                Main Content: ${mainContent.offsetHeight}px<br>
+                Visual Grid: ${visualGrid.offsetHeight}px<br>
+                Window Height: ${window.innerHeight}px
+            `;
+            document.body.appendChild(debugInfo);
+        }, 1000);
+    </script>
+</body>
+</html> 
