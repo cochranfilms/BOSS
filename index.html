@@ -83,22 +83,26 @@
             position: relative;
             z-index: 10;
             text-align: center;
-            max-width: 1200px;
-            padding: 2rem;
+            max-width: 100%;
+            padding: 1rem;
             color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .intro-logo {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 2rem;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
             animation: logoFloat 3s ease-in-out infinite;
         }
 
         .intro-title {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             font-weight: bold;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             background: linear-gradient(45deg, #ffffff, #ffd700, #ffffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -107,21 +111,25 @@
         }
 
         .intro-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 3rem;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
             opacity: 0.9;
+        }
+
+        .intro-header {
+            flex-shrink: 0;
         }
 
         .video-container {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
+            padding: 1rem;
+            margin: 1rem 0;
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255, 255, 255, 0.1);
-            max-width: 1000px;
+            max-width: 95vw;
             width: 100%;
-            min-height: 600px;
+            flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -129,21 +137,21 @@
         }
 
         .video-title {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
             color: #ffd700;
         }
 
         .video-desc {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
+            font-size: 1rem;
+            margin-bottom: 1rem;
             opacity: 0.9;
         }
 
         .video-player {
             width: 100%;
-            max-width: 900px;
-            height: 500px;
+            max-width: 90vw;
+            height: 60vh;
             border-radius: 15px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
@@ -152,13 +160,13 @@
             background: linear-gradient(45deg, #ffd700, #ffed4e);
             color: #1b0bb6;
             border: none;
-            padding: 1rem 3rem;
-            font-size: 1.3rem;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
             font-weight: bold;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 2rem;
+            margin-top: 1rem;
             box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
             animation: buttonPulse 2s ease-in-out infinite;
         }
@@ -171,29 +179,29 @@
         .feature-highlights {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
+            gap: 1rem;
+            margin: 1rem 0;
             flex-wrap: wrap;
         }
 
         .feature-highlight {
             background: rgba(255, 255, 255, 0.1);
-            padding: 1rem 1.5rem;
-            border-radius: 15px;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
-            min-width: 150px;
+            min-width: 120px;
         }
 
         .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
             display: block;
         }
 
         .feature-text {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             opacity: 0.9;
         }
 
@@ -233,15 +241,19 @@
 
         @media (max-width: 768px) {
             .intro-title {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
             
             .intro-subtitle {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
             
             .video-title {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
+            }
+            
+            .video-player {
+                height: 50vh;
             }
             
             .feature-highlights {
@@ -264,23 +276,25 @@
         <button class="skip-button" onclick="enterWorkshop()">Skip Intro</button>
         
         <div class="intro-content">
-            <img src="finalnewbossss-white.png" alt="BOSS Learning Academy" class="intro-logo">
-            
-            <h1 class="intro-title">STEM Lab Workshop</h1>
-            <p class="intro-subtitle">Welcome to the Future of Content Creation</p>
-            
-            <div class="feature-highlights">
-                <div class="feature-highlight">
-                    <span class="feature-icon">🎬</span>
-                    <div class="feature-text">Learn from Real Creators</div>
-                </div>
-                <div class="feature-highlight">
-                    <span class="feature-icon">📱</span>
-                    <div class="feature-text">Master Digital Skills</div>
-                </div>
-                <div class="feature-highlight">
-                    <span class="feature-icon">🚀</span>
-                    <div class="feature-text">Build Your Future</div>
+            <div class="intro-header">
+                <img src="finalnewbossss-white.png" alt="BOSS Learning Academy" class="intro-logo">
+                
+                <h1 class="intro-title">STEM Lab Workshop</h1>
+                <p class="intro-subtitle">Welcome to the Future of Content Creation</p>
+                
+                <div class="feature-highlights">
+                    <div class="feature-highlight">
+                        <span class="feature-icon">🎬</span>
+                        <div class="feature-text">Learn from Real Creators</div>
+                    </div>
+                    <div class="feature-highlight">
+                        <span class="feature-icon">📱</span>
+                        <div class="feature-text">Master Digital Skills</div>
+                    </div>
+                    <div class="feature-highlight">
+                        <span class="feature-icon">🚀</span>
+                        <div class="feature-text">Build Your Future</div>
+                    </div>
                 </div>
             </div>
             
@@ -288,7 +302,7 @@
                 <h2 class="video-title">🎵 6th Grade Anthem</h2>
                 <p class="video-desc">A special performance by Herman J. Russell West End Academy</p>
                 
-                <div id="video-wrapper" style="width: 100%; max-width: 900px;">
+                <div id="video-wrapper" style="width: 100%;">
                     <iframe 
                         class="video-player" 
                         src="https://www.youtube.com/embed/rbA6_5LL8A8?autoplay=1&mute=1&controls=1&rel=0&showinfo=0" 
