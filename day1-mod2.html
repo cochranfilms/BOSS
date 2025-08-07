@@ -169,7 +169,7 @@
     <!-- Hero Section -->
     <section id="hero" class="hero-section">
         <div class="hero-content">
-            <div class="hero-icon">🎬</div>
+            <div class="hero-icon" data-module="2">🎬</div>
             <h1 class="hero-title" data-text="Content Creation Fundamentals">Content Creation Fundamentals</h1>
             <p class="hero-subtitle">STEM Lab Saturdays</p>
             
@@ -423,6 +423,17 @@
         let isNavigating = false;
         const sections = ['hero', 'content-types', 'planning', 'branding', 'journey'];
         let currentSectionIndex = 0;
+        
+        // Module navigation
+        const modules = [
+            'index.html',
+            'day1-mod2.html', 
+            'day2-mod3.html',
+            'day2-mod4.html',
+            'day3-mod5.html',
+            'day4-mod6.html'
+        ];
+        let currentModuleIndex = 1;
 
         // Function to navigate to section
         function navigateToSection(index) {
@@ -444,18 +455,29 @@
             
             switch(e.key) {
                 case 'ArrowDown':
+                case 'ArrowUp':
+                    e.preventDefault();
+                    isNavigating = true;
+                    if (e.key === 'ArrowDown') {
+                        navigateToSection(currentSectionIndex + 1);
+                    } else {
+                        navigateToSection(currentSectionIndex - 1);
+                    }
+                    setTimeout(() => { isNavigating = false; }, 1000);
+                    break;
                 case 'ArrowRight':
                     e.preventDefault();
                     isNavigating = true;
-                    navigateToSection(currentSectionIndex + 1);
-                    setTimeout(() => { isNavigating = false; }, 1000);
+                    // Navigate to next module
+                    const nextModuleIndex = (currentModuleIndex + 1) % modules.length;
+                    window.location.href = modules[nextModuleIndex];
                     break;
-                case 'ArrowUp':
                 case 'ArrowLeft':
                     e.preventDefault();
                     isNavigating = true;
-                    navigateToSection(currentSectionIndex - 1);
-                    setTimeout(() => { isNavigating = false; }, 1000);
+                    // Navigate to previous module
+                    const prevModuleIndex = (currentModuleIndex - 1 + modules.length) % modules.length;
+                    window.location.href = modules[prevModuleIndex];
                     break;
                 case 'Home':
                     e.preventDefault();
