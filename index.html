@@ -78,6 +78,8 @@
             background: url('bg.gif') center/cover;
             opacity: 0.6;
             z-index: 1;
+            will-change: opacity;
+            transform: translateZ(0);
         }
 
         .intro-particles {
@@ -159,6 +161,9 @@
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
             border: 2px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
+            will-change: transform;
+            transform: translateZ(0);
+            backface-visibility: hidden;
         }
 
         .video-player:hover {
@@ -211,7 +216,7 @@
             <div class="video-container">
                 <iframe 
                     class="video-player" 
-                    src="https://www.youtube.com/embed/rbA6_5LL8A8?autoplay=1&mute=1&controls=1&rel=0&showinfo=0" 
+                    src="https://www.youtube.com/embed/rbA6_5LL8A8?autoplay=1&mute=0&controls=1&rel=0&showinfo=0" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
@@ -221,10 +226,21 @@
     </div>
 
     <script>
-        // YouTube iframe setup
-        const videoIframe = document.querySelector('.video-player');
-        
-        // Listen for YouTube iframe API events
+        // Optimize for smooth loading
+        document.addEventListener('DOMContentLoaded', function() {
+            // Reduce particle count for better performance
+            createParticles();
+            
+            // Preload critical resources
+            const videoIframe = document.querySelector('.video-player');
+            if (videoIframe) {
+                videoIframe.addEventListener('load', function() {
+                    console.log('Video iframe loaded successfully');
+                });
+            }
+        });
+
+        // YouTube iframe setup with better performance
         window.addEventListener('message', function(event) {
             if (event.origin !== 'https://www.youtube.com') return;
             
@@ -271,10 +287,10 @@
             }
         });
 
-        // Create floating particles
+        // Create floating particles with reduced count for better performance
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
-            const particleCount = 20;
+            const particleCount = 10; // Reduced from 20 for better performance
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
@@ -286,11 +302,6 @@
                 particlesContainer.appendChild(particle);
             }
         }
-
-        // Initialize particles
-        createParticles();
-
-
     </script>
 </body>
 </html>
