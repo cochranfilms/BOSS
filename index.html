@@ -633,6 +633,55 @@
                 card.style.boxShadow = '';
             });
         });
+
+        // Scroll snapping to sections
+        let isScrolling = false;
+        let scrollTimeout;
+
+        window.addEventListener('scroll', () => {
+            if (isScrolling) return;
+            
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                const scrollPosition = window.pageYOffset + window.innerHeight / 2;
+                let closestSection = null;
+                let closestDistance = Infinity;
+                
+                sections.forEach((sectionId) => {
+                    const section = document.getElementById(sectionId);
+                    if (section) {
+                        const sectionTop = section.offsetTop;
+                        const sectionBottom = sectionTop + section.offsetHeight;
+                        const sectionCenter = sectionTop + section.offsetHeight / 2;
+                        const distance = Math.abs(scrollPosition - sectionCenter);
+                        
+                        if (distance < closestDistance) {
+                            closestDistance = distance;
+                            closestSection = sectionId;
+                        }
+                    }
+                });
+                
+                if (closestSection) {
+                    isScrolling = true;
+                    const targetSection = document.getElementById(closestSection);
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Update current section index
+                    const sectionIndex = sections.indexOf(closestSection);
+                    if (sectionIndex !== -1) {
+                        currentSectionIndex = sectionIndex;
+                    }
+                    
+                    setTimeout(() => {
+                        isScrolling = false;
+                    }, 1000);
+                }
+            }, 150); // Small delay to allow for scroll momentum
+        });
     </script>
 </body>
 </html> 
