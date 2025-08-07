@@ -121,6 +121,11 @@
             border: 2px solid rgba(255, 255, 255, 0.1);
             max-width: 800px;
             width: 100%;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .video-title {
@@ -282,10 +287,18 @@
                 <h2 class="video-title">🎵 6th Grade Anthem</h2>
                 <p class="video-desc">A special performance by Herman J. Russell West End Academy</p>
                 
-                <video class="video-player" controls autoplay muted>
-                    <source src="6th_Grade_Anthem.m4v" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <div id="video-wrapper" style="width: 100%; max-width: 700px;">
+                    <video class="video-player" controls autoplay muted preload="metadata" style="width: 100%; height: auto;">
+                        <source src="6th_Grade_Anthem.m4v" type="video/mp4">
+                        <source src="6th_Grade_Anthem.m4v" type="video/x-m4v">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div id="video-fallback" style="display: none; text-align: center; padding: 2rem; color: white;">
+                        <h3>🎵 Video Loading...</h3>
+                        <p>If the video doesn't appear, please check that the file "6th_Grade_Anthem.m4v" is in the same folder as this page.</p>
+                        <button onclick="enterWorkshop()" style="background: #ffd700; color: #1b0bb6; padding: 0.5rem 1rem; border: none; border-radius: 10px; cursor: pointer;">Continue to Workshop</button>
+                    </div>
+                </div>
             </div>
             
             <button class="enter-button" onclick="enterWorkshop()">
@@ -295,13 +308,38 @@
     </div>
 
     <script>
-        // Auto-advance to workshop after video ends
+        // Video debugging and setup
         const video = document.querySelector('.video-player');
+        const videoFallback = document.getElementById('video-fallback');
+        
+        // Debug video loading
+        video.addEventListener('loadstart', () => console.log('Video loading started'));
+        video.addEventListener('loadedmetadata', () => console.log('Video metadata loaded'));
+        video.addEventListener('canplay', () => console.log('Video can play'));
+        video.addEventListener('error', (e) => {
+            console.error('Video error:', e);
+            console.error('Video error details:', video.error);
+            // Show fallback if video fails to load
+            video.style.display = 'none';
+            videoFallback.style.display = 'block';
+        });
+        
+        // Auto-advance to workshop after video ends
         video.addEventListener('ended', function() {
+            console.log('Video ended, advancing to workshop');
             setTimeout(() => {
                 enterWorkshop();
             }, 2000); // 2 second delay after video ends
         });
+
+        // Show fallback if video doesn't load within 10 seconds
+        setTimeout(() => {
+            if (video.readyState === 0) { // HAVE_NOTHING
+                console.log('Video taking too long to load, showing fallback');
+                video.style.display = 'none';
+                videoFallback.style.display = 'block';
+            }
+        }, 10000);
 
         function enterWorkshop() {
             // Add a fade-out effect
