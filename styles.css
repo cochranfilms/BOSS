@@ -100,7 +100,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 100px 2rem 3rem 2rem;
+    padding: 150px 2rem 3rem 2rem;
     position: relative;
 }
 
@@ -115,6 +115,8 @@ body {
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(27, 11, 182, 0.5));
     position: relative;
     overflow: hidden;
+    padding-top: 120px;
+    min-height: 100vh;
 }
 
 .hero-section::before {
@@ -138,11 +140,13 @@ body {
     z-index: 2;
     max-width: 1000px;
     margin: 0 auto;
+    padding-top: 50px;
 }
 
 .hero-icon {
     font-size: 7rem;
     margin-bottom: 1.5rem;
+    margin-top: 2rem;
     animation: heroIconFloat 4s ease-in-out infinite;
     filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.6));
 }
@@ -767,7 +771,7 @@ body {
     }
     
     .section {
-        padding: 80px 1rem 2rem 1rem;
+        padding: 120px 1rem 2rem 1rem;
         min-height: 85vh;
     }
     
