@@ -153,8 +153,8 @@
 
         .video-player {
             width: 100%;
-            max-width: 177.78vh; /* 16:9 ratio width */
-            height: 100vh;
+            max-width: 120vh; /* Scaled down 16:9 ratio width */
+            height: 67.5vh; /* Scaled down proportionally */
             border-radius: 20px;
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
             border: 2px solid rgba(255, 255, 255, 0.1);
@@ -167,31 +167,9 @@
             border-color: rgba(255, 215, 0, 0.3);
         }
 
-        .enter-button {
-            background: linear-gradient(45deg, #ffd700, #ffed4e);
-            color: #1b0bb6;
-            border: none;
-            padding: 1rem 2.5rem;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
-            animation: buttonPulse 2s ease-in-out infinite;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            z-index: 20;
-        }
 
-        .enter-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
-        }
+
+
 
 
 
@@ -218,14 +196,8 @@
             }
             
             .video-player {
-                height: 100vh;
-                max-width: 177.78vh;
-            }
-            
-            .enter-button {
-                padding: 0.8rem 2rem;
-                font-size: 1rem;
-                bottom: 1rem;
+                height: 60vh;
+                max-width: 106.67vh;
             }
         }
     </style>
@@ -245,10 +217,6 @@
                     allowfullscreen>
                 </iframe>
             </div>
-            
-            <button class="enter-button" onclick="enterWorkshop()">
-                🚀 Enter Workshop
-            </button>
         </div>
     </div>
 
