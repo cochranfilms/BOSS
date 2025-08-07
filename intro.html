@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>STEM Lab Workshop - Welcome | BOSS Learning Academy & Course Creator Academy</title>
+    <meta name="title" content="STEM Lab Workshop - Welcome | BOSS Learning Academy & Course Creator Academy">
+    <meta name="description" content="Welcome to the STEM Lab workshop! Watch the Herman J. Russell West End Academy 6th Grade Anthem before diving into content creation with real creators like MrBeast, Kai Cenat, and Ishowspeed.">
+    <meta name="keywords" content="STEM lab, content creation, Herman J. Russell West End Academy, 6th Grade Anthem, BOSS Learning Academy, Course Creator Academy, middle school, high school, education, digital skills">
+    <meta name="author" content="BOSS Learning Academy & Course Creator Academy">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://boss.coursecreatoracademy.org/">
+    <meta property="og:title" content="STEM Lab Workshop - Welcome | BOSS Learning Academy">
+    <meta property="og:description" content="Welcome to the STEM Lab workshop! Watch the Herman J. Russell West End Academy 6th Grade Anthem before diving into content creation.">
+    <meta property="og:image" content="Social-Share.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="BOSS Learning Academy">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://boss.coursecreatoracademy.org/">
+    <meta property="twitter:title" content="STEM Lab Workshop - Welcome | BOSS Learning Academy">
+    <meta property="twitter:description" content="Welcome to the STEM Lab workshop! Watch the Herman J. Russell West End Academy 6th Grade Anthem before diving into content creation.">
+    <meta property="twitter:image" content="Social-Share.jpg">
+    <meta property="twitter:site" content="@BOSSLearning">
+    <meta property="twitter:creator" content="@CourseCreatorAcademy">
+    
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#1b0bb6">
+    <meta name="msapplication-TileColor" content="#1b0bb6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="STEM Lab Workshop">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="finalnewbossss-white.png">
+    <link rel="apple-touch-icon" href="finalnewbossss-white.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://boss.coursecreatoracademy.org/">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Intro-specific styles */
+        .intro-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1b0bb6 0%, #4a148c 50%, #7b1fa2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('STEM LAB WORKSHOP.JPG') center/cover;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .intro-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 1200px;
+            padding: 2rem;
+            color: white;
+        }
+
+        .intro-logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 2rem;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        .intro-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffffff, #ffd700, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: titleGlow 2s ease-in-out infinite;
+        }
+
+        .intro-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .video-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .video-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .video-desc {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .video-player {
+            width: 100%;
+            max-width: 700px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .enter-button {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #1b0bb6;
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+            animation: buttonPulse 2s ease-in-out infinite;
+        }
+
+        .enter-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.5);
+        }
+
+        .feature-highlights {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .feature-highlight {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .feature-text {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .skip-button {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .skip-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .intro-title {
+                font-size: 2.5rem;
+            }
+            
+            .intro-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .video-title {
+                font-size: 1.5rem;
+            }
+            
+            .feature-highlights {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .skip-button {
+                top: 1rem;
+                right: 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="intro-container">
+        <div class="intro-background"></div>
+        
+        <button class="skip-button" onclick="enterWorkshop()">Skip Intro</button>
+        
+        <div class="intro-content">
+            <img src="finalnewbossss-white.png" alt="BOSS Learning Academy" class="intro-logo">
+            
+            <h1 class="intro-title">STEM Lab Workshop</h1>
+            <p class="intro-subtitle">Welcome to the Future of Content Creation</p>
+            
+            <div class="feature-highlights">
+                <div class="feature-highlight">
+                    <span class="feature-icon">🎬</span>
+                    <div class="feature-text">Learn from Real Creators</div>
+                </div>
+                <div class="feature-highlight">
+                    <span class="feature-icon">📱</span>
+                    <div class="feature-text">Master Digital Skills</div>
+                </div>
+                <div class="feature-highlight">
+                    <span class="feature-icon">🚀</span>
+                    <div class="feature-text">Build Your Future</div>
+                </div>
+            </div>
+            
+            <div class="video-container">
+                <h2 class="video-title">🎵 6th Grade Anthem</h2>
+                <p class="video-desc">A special performance by Herman J. Russell West End Academy</p>
+                
+                <video class="video-player" controls autoplay muted>
+                    <source src="6th_Grade_Anthem.m4v" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            
+            <button class="enter-button" onclick="enterWorkshop()">
+                🚀 Enter Workshop
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Auto-advance to workshop after video ends
+        const video = document.querySelector('.video-player');
+        video.addEventListener('ended', function() {
+            setTimeout(() => {
+                enterWorkshop();
+            }, 2000); // 2 second delay after video ends
+        });
+
+        function enterWorkshop() {
+            // Add a fade-out effect
+            document.body.style.transition = 'opacity 0.5s ease';
+            document.body.style.opacity = '0';
+            
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 500);
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                enterWorkshop();
+            }
+        });
+
+        // Add some interactive elements
+        document.querySelectorAll('.feature-highlight').forEach(feature => {
+            feature.addEventListener('mouseenter', () => {
+                feature.style.transform = 'translateY(-5px) scale(1.05)';
+                feature.style.background = 'rgba(255, 255, 255, 0.2)';
+            });
+            
+            feature.addEventListener('mouseleave', () => {
+                feature.style.transform = '';
+                feature.style.background = 'rgba(255, 255, 255, 0.1)';
+            });
+        });
+    </script>
+</body>
+</html>

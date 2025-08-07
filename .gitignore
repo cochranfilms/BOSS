@@ -26,3 +26,10 @@ build/
 
 # Keep CNAME file - DO NOT IGNORE
 !CNAME
+
+# Large video files
+*.m4v
+*.mp4
+*.mov
+*.avi
+*.mkv

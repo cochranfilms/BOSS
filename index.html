@@ -219,6 +219,10 @@
         <div class="module-nav-container">
             <h3 class="module-nav-title">STEM Lab Modules</h3>
             <div class="module-links">
+                <a href="intro.html" class="module-link">
+                    <span class="module-icon">🎬</span>
+                    <span class="module-text">Welcome & Video</span>
+                </a>
                 <a href="index.html" class="module-link active">
                     <span class="module-icon">🎬</span>
                     <span class="module-text">Module 1: Creator Mindset</span>
@@ -558,6 +562,7 @@
         
         // Module navigation
         const modules = [
+            'intro.html',
             'index.html',
             'day1-mod2.html', 
             'day2-mod3.html',
@@ -565,7 +570,7 @@
             'day3-mod5.html',
             'day4-mod6.html'
         ];
-        let currentModuleIndex = 0;
+        let currentModuleIndex = 1;
 
         // Function to navigate to section
         function navigateToSection(index) {
