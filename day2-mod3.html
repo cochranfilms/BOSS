@@ -605,20 +605,33 @@
         document.addEventListener('click', enableScrollSnapping);
         document.addEventListener('wheel', enableScrollSnapping, { passive: true });
         document.addEventListener('touchstart', enableScrollSnapping, { passive: true });
+        
+        // Add a passive scroll listener to actively prevent unwanted scrolling during page load
+        window.addEventListener('scroll', function(e) {
+            if (!hasUserInteracted && window.pageYOffset > 0) {
+                // If user hasn't interacted and page tries to scroll away from top, force it back
+                window.scrollTo(0, 0);
+            }
+        }, { passive: true });
 
         // Combined scroll handling with snapping and section tracking
         let isScrolling = false;
         let scrollTimeout;
         let isInCanvaSection = false; // Flag to disable scroll snapping in sections that need free scrolling
         let scrollSnappingEnabled = false; // Flag to control when scroll snapping is active
+        let hasUserInteracted = false; // Flag to track if user has manually interacted
 
         // Function to enable scroll snapping after user interaction
         function enableScrollSnapping() {
-            scrollSnappingEnabled = true;
+            if (!hasUserInteracted) {
+                hasUserInteracted = true;
+                scrollSnappingEnabled = true;
+            }
         }
 
+        // Completely prevent scroll snapping until user explicitly interacts
         window.addEventListener('scroll', () => {
-            if (isScrolling || !scrollSnappingEnabled) return;
+            if (isScrolling || !scrollSnappingEnabled || !hasUserInteracted) return;
             
             // Check if we're in the Canva section
             const canvaSection = document.getElementById('canva-link');
@@ -726,8 +739,9 @@
 
         // Page load handling - ensure we start at the top
         document.addEventListener('DOMContentLoaded', function() {
-            // Temporarily disable scroll snapping during page load
+            // Completely disable scroll snapping and user interaction tracking during page load
             scrollSnappingEnabled = false;
+            hasUserInteracted = false;
             
             // Force scroll to top when page loads
             window.scrollTo(0, 0);
@@ -770,11 +784,9 @@
                 window.scrollTo(0, 0);
             }
             
-            // Keep scroll snapping disabled for a bit longer to ensure page is fully loaded
-            setTimeout(() => {
-                // Only enable scroll snapping if user has interacted
-                // This prevents automatic section detection on page load
-            }, 3000);
+            // Ensure all flags are reset and scroll snapping is completely disabled
+            scrollSnappingEnabled = false;
+            hasUserInteracted = false;
         });
     </script>
 </body>
