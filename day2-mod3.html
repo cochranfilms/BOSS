@@ -502,6 +502,7 @@
 
         // Arrow Key Navigation
         let isNavigating = false;
+        let isArrowKeyNavigation = false; // Flag to track arrow key navigation specifically
         const sections = ['hero', 'opening-video', 'kahoot', 'camera-mastery', 'shooting-pro', 'mobile-editing', 'canva-link'];
         let currentSectionIndex = 0;
         
@@ -549,12 +550,16 @@
                 case 'ArrowUp':
                     e.preventDefault();
                     isNavigating = true;
+                    isArrowKeyNavigation = true;
                     if (e.key === 'ArrowDown') {
                         navigateToSection(currentSectionIndex + 1);
                     } else {
                         navigateToSection(currentSectionIndex - 1);
                     }
-                    setTimeout(() => { isNavigating = false; }, 1000);
+                    setTimeout(() => { 
+                        isNavigating = false; 
+                        isArrowKeyNavigation = false;
+                    }, 1000);
                     break;
                 case 'ArrowRight':
                     e.preventDefault();
@@ -573,14 +578,22 @@
                 case 'Home':
                     e.preventDefault();
                     isNavigating = true;
+                    isArrowKeyNavigation = true;
                     navigateToSection(0);
-                    setTimeout(() => { isNavigating = false; }, 1000);
+                    setTimeout(() => { 
+                        isNavigating = false; 
+                        isArrowKeyNavigation = false;
+                    }, 1000);
                     break;
                 case 'End':
                     e.preventDefault();
                     isNavigating = true;
+                    isArrowKeyNavigation = true;
                     navigateToSection(sections.length - 1);
-                    setTimeout(() => { isNavigating = false; }, 1000);
+                    setTimeout(() => { 
+                        isNavigating = false; 
+                        isArrowKeyNavigation = false;
+                    }, 1000);
                     break;
             }
         });
@@ -605,7 +618,7 @@
         
         // Add a passive scroll listener to actively prevent unwanted scrolling during page load
         window.addEventListener('scroll', function(e) {
-            if (!hasUserInteracted && window.pageYOffset > 0 && !isNavigating) {
+            if (!hasUserInteracted && window.pageYOffset > 0 && !isNavigating && !isArrowKeyNavigation) {
                 // If user hasn't interacted and page tries to scroll away from top (and not from arrow key navigation), force it back
                 window.scrollTo(0, 0);
             }
@@ -628,7 +641,7 @@
 
         // Completely prevent scroll snapping until user explicitly interacts
         window.addEventListener('scroll', () => {
-            if (isScrolling || !scrollSnappingEnabled || !hasUserInteracted) return;
+            if (isScrolling || !scrollSnappingEnabled || !hasUserInteracted || isNavigating) return;
             
             // Check if we're in the Canva section
             const canvaSection = document.getElementById('canva-link');
