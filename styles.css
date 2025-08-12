@@ -40,13 +40,13 @@ body {
 }
 
 .nav-container {
-    max-width: 1800px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 250px 700px 250px;
-    align-items: center;
-    padding: 0 12rem;
-    gap: 3rem;
+    max-width: 1800px !important;
+    margin: 0 auto !important;
+    display: grid !important;
+    grid-template-columns: 300px 600px 300px !important;
+    align-items: center !important;
+    padding: 0 8rem !important;
+    gap: 4rem !important;
 }
 
 .nav-logo img, .nav-logo-right img {
@@ -55,48 +55,58 @@ body {
 }
 
 .nav-logo {
-    grid-column: 1;
-    justify-self: start;
+    grid-column: 1 !important;
+    justify-self: start !important;
+    margin-right: 0 !important;
+    flex-shrink: 0 !important;
 }
 
 .nav-logo-right {
-    grid-column: 3;
-    justify-self: end;
+    grid-column: 3 !important;
+    justify-self: end !important;
+    margin-left: 0 !important;
+    flex-shrink: 0 !important;
 }
 
 .nav-menu {
-    grid-column: 2;
-    display: flex;
-    list-style: none;
-    gap: 3rem;
-    justify-content: center;
-    flex-wrap: nowrap;
-    padding: 1rem 3rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    justify-self: center;
-    width: 100%;
-    min-height: 60px;
+    grid-column: 2 !important;
+    display: flex !important;
+    list-style: none !important;
+    gap: 3rem !important;
+    justify-content: center !important;
+    flex-wrap: nowrap !important;
+    padding: 1rem 3rem !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 15px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    justify-self: center !important;
+    width: 100% !important;
+    min-height: 60px !important;
+    margin: 0 !important;
 }
 
 .nav-link {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    padding: 0.6rem 1.2rem;
-    position: relative;
-    white-space: nowrap;
-    text-align: center;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-size: 1.1rem !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+    padding: 0.6rem 1.2rem !important;
+    position: relative !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+    background: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
 }
 
 .nav-link:hover, .nav-link.active {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(27, 11, 182, 0.3));
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(27, 11, 182, 0.3)) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) !important;
+    border-radius: 20px !important;
 }
 
 /* Section Styles */
