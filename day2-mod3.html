@@ -544,6 +544,9 @@
         document.addEventListener('keydown', (e) => {
             if (isNavigating) return; // Prevent rapid navigation
             
+            // Enable scroll snapping when user uses arrow keys
+            enableScrollSnapping();
+            
             switch(e.key) {
                 case 'ArrowDown':
                 case 'ArrowUp':
@@ -598,22 +601,24 @@
             });
         });
 
+        // Enable scroll snapping on user interaction
+        document.addEventListener('click', enableScrollSnapping);
+        document.addEventListener('wheel', enableScrollSnapping, { passive: true });
+        document.addEventListener('touchstart', enableScrollSnapping, { passive: true });
+
         // Combined scroll handling with snapping and section tracking
         let isScrolling = false;
         let scrollTimeout;
         let isInCanvaSection = false; // Flag to disable scroll snapping in sections that need free scrolling
-        let isPageJustLoaded = true; // Flag to prevent scroll snapping when page first loads
+        let scrollSnappingEnabled = false; // Flag to control when scroll snapping is active
+
+        // Function to enable scroll snapping after user interaction
+        function enableScrollSnapping() {
+            scrollSnappingEnabled = true;
+        }
 
         window.addEventListener('scroll', () => {
-            if (isScrolling) return;
-            
-            // Disable scroll snapping for the first few seconds after page load
-            if (isPageJustLoaded) {
-                setTimeout(() => {
-                    isPageJustLoaded = false;
-                }, 2000); // Wait 2 seconds before enabling scroll snapping
-                return;
-            }
+            if (isScrolling || !scrollSnappingEnabled) return;
             
             // Check if we're in the Canva section
             const canvaSection = document.getElementById('canva-link');
@@ -721,6 +726,9 @@
 
         // Page load handling - ensure we start at the top
         document.addEventListener('DOMContentLoaded', function() {
+            // Temporarily disable scroll snapping during page load
+            scrollSnappingEnabled = false;
+            
             // Force scroll to top when page loads
             window.scrollTo(0, 0);
             
@@ -761,6 +769,12 @@
             if (window.pageYOffset > 0) {
                 window.scrollTo(0, 0);
             }
+            
+            // Keep scroll snapping disabled for a bit longer to ensure page is fully loaded
+            setTimeout(() => {
+                // Only enable scroll snapping if user has interacted
+                // This prevents automatic section detection on page load
+            }, 3000);
         });
     </script>
 </body>
