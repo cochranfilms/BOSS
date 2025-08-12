@@ -42,10 +42,11 @@ body {
 .nav-container {
     max-width: 1800px;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
     align-items: center;
     padding: 0 12rem;
+    gap: 2rem;
 }
 
 .nav-logo img, .nav-logo-right img {
@@ -54,26 +55,27 @@ body {
 }
 
 .nav-logo {
-    flex-shrink: 0;
-    margin-right: auto;
+    grid-column: 1;
+    justify-self: start;
 }
 
 .nav-logo-right {
-    flex-shrink: 0;
-    margin-left: auto;
+    grid-column: 3;
+    justify-self: end;
 }
 
 .nav-menu {
+    grid-column: 2;
     display: flex;
     list-style: none;
     gap: 3rem;
     justify-content: center;
     flex-wrap: nowrap;
-    margin: 0 4rem;
     padding: 0.5rem 2rem;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    justify-self: center;
 }
 
 .nav-link {
@@ -86,6 +88,8 @@ body {
     border-radius: 25px;
     position: relative;
     white-space: nowrap;
+    min-width: fit-content;
+    text-align: center;
 }
 
 .nav-link:hover, .nav-link.active {
