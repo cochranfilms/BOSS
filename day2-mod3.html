@@ -544,9 +544,6 @@
         document.addEventListener('keydown', (e) => {
             if (isNavigating) return; // Prevent rapid navigation
             
-            // Enable scroll snapping when user uses arrow keys
-            enableScrollSnapping();
-            
             switch(e.key) {
                 case 'ArrowDown':
                 case 'ArrowUp':
@@ -608,8 +605,8 @@
         
         // Add a passive scroll listener to actively prevent unwanted scrolling during page load
         window.addEventListener('scroll', function(e) {
-            if (!hasUserInteracted && window.pageYOffset > 0) {
-                // If user hasn't interacted and page tries to scroll away from top, force it back
+            if (!hasUserInteracted && window.pageYOffset > 0 && !isNavigating) {
+                // If user hasn't interacted and page tries to scroll away from top (and not from arrow key navigation), force it back
                 window.scrollTo(0, 0);
             }
         }, { passive: true });
