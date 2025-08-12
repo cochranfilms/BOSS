@@ -692,26 +692,14 @@ body {
 
 .canva-embed-wrapper {
     position: relative;
-    width: 90%; /* Reduced from 100% for better mobile fit */
-    max-width: 800px; /* Maximum width to prevent it from being too large */
+    width: 100%;
     height: 0;
     padding-top: 56.25%; /* 16:9 aspect ratio */
     padding-bottom: 0;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    margin: 2rem auto 1rem auto; /* Centered with reduced margins */
     overflow: hidden;
-    border-radius: 20px;
-    will-change: transform;
-    border: 3px solid rgba(255, 255, 255, 0.2);
-    background: linear-gradient(135deg, rgba(27, 11, 182, 0.1), rgba(255, 255, 255, 0.05));
-    transition: all 0.3s ease;
 }
 
-.canva-embed-wrapper:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-    border-color: rgba(255, 215, 0, 0.4);
-}
+
 
 .canva-embed-wrapper iframe {
     position: absolute;
@@ -722,7 +710,6 @@ body {
     border: none;
     padding: 0;
     margin: 0;
-    border-radius: 17px; /* Slightly smaller than wrapper for border effect */
 }
 
 .canva-credit {
@@ -747,14 +734,7 @@ body {
 /* Responsive adjustments for Canva embed */
 @media (max-width: 768px) {
     .canva-embed-wrapper {
-        width: 95%; /* Slightly wider on tablets */
         padding-top: 70%; /* Better aspect ratio for tablets */
-        margin: 1.5rem auto 0.8rem auto;
-        border-radius: 15px;
-    }
-    
-    .canva-embed-wrapper iframe {
-        border-radius: 12px;
     }
     
     .canva-credit {
@@ -765,14 +745,7 @@ body {
 
 @media (max-width: 480px) {
     .canva-embed-wrapper {
-        width: 98%; /* Almost full width on very small screens */
         padding-top: 80%; /* Better mobile aspect ratio */
-        margin: 1rem auto 0.5rem auto;
-        border-radius: 12px;
-    }
-    
-    .canva-embed-wrapper iframe {
-        border-radius: 9px;
     }
     
     .canva-credit {
@@ -783,14 +756,7 @@ body {
 
 @media (max-width: 360px) {
     .canva-embed-wrapper {
-        width: 100%; /* Full width on very small screens */
         padding-top: 85%; /* Even better for tiny screens */
-        margin: 0.8rem auto 0.4rem auto;
-        border-radius: 10px;
-    }
-    
-    .canva-embed-wrapper iframe {
-        border-radius: 7px;
     }
     
     .canva-credit {
