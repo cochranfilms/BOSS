@@ -684,6 +684,96 @@ body {
     text-align: center;
 }
 
+/* Canva Presentation Embed */
+.canva-embed-container {
+    margin: 2rem 0;
+    width: 100%;
+}
+
+.canva-embed-wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 0;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    margin-top: 1.6em;
+    margin-bottom: 0.9em;
+    overflow: hidden;
+    border-radius: 20px;
+    will-change: transform;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, rgba(27, 11, 182, 0.1), rgba(255, 255, 255, 0.05));
+    transition: all 0.3s ease;
+}
+
+.canva-embed-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 215, 0, 0.4);
+}
+
+.canva-embed-wrapper iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 17px; /* Slightly smaller than wrapper for border effect */
+}
+
+.canva-credit {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.canva-credit a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+.canva-credit a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive adjustments for Canva embed */
+@media (max-width: 768px) {
+    .canva-embed-wrapper {
+        padding-top: 75%; /* Taller aspect ratio for mobile */
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        border-radius: 15px;
+    }
+    
+    .canva-embed-wrapper iframe {
+        border-radius: 12px;
+    }
+    
+    .canva-credit {
+        font-size: 0.8rem;
+        margin-top: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .canva-embed-wrapper {
+        padding-top: 100%; /* Square aspect ratio for very small screens */
+        border-radius: 12px;
+    }
+    
+    .canva-embed-wrapper iframe {
+        border-radius: 9px;
+    }
+}
+
 /* Module Navigation */
 .module-nav {
     position: fixed;
