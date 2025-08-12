@@ -351,7 +351,6 @@
             
             <div class="highlight-box">
                 <h2>Canva Presentation Slides</h2>
-                <p>Access our comprehensive slideshow with additional tips and techniques!</p>
                 
                 <!-- Canva Presentation Embed -->
                 <div class="canva-embed-container">
@@ -694,23 +693,7 @@
                     this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4)';
                 });
 
-                // Add scroll hint when entering Canva section
-                const canvaSection = document.getElementById('canva-link');
-                if (canvaSection) {
-                    const observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                // Show subtle scroll hint
-                                canvaWrapper.style.borderColor = 'rgba(255, 215, 0, 0.6)';
-                                setTimeout(() => {
-                                    canvaWrapper.style.borderColor = 'rgba(255, 255, 255, 0.2)';
-                                }, 2000);
-                            }
-                        });
-                    }, { threshold: 0.3 });
-                    
-                    observer.observe(canvaSection);
-                }
+
             }
         });
     </script>

@@ -688,31 +688,6 @@ body {
 .canva-embed-container {
     margin: 2rem 0;
     width: 100%;
-    position: relative;
-}
-
-/* Add scroll indicator for Canva section */
-.canva-embed-container::before {
-    content: "📱 Scroll to view full presentation";
-    position: absolute;
-    top: -2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(135deg, rgba(27, 11, 182, 0.9), rgba(255, 255, 255, 0.2));
-    color: #ffffff;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-shadow: 1px 1px 0px rgba(0,0,0,0.8);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    z-index: 10;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
-
-.canva-embed-container:hover::before {
-    opacity: 1;
 }
 
 .canva-embed-wrapper {
