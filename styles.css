@@ -696,8 +696,8 @@ body {
 
 .video-player {
     width: 100%;
-    max-width: 800px;
-    height: 450px;
+    max-width: 700px;
+    height: 350px;
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     border: 2px solid rgba(255, 255, 255, 0.2);
@@ -718,20 +718,44 @@ body {
     text-shadow: 1px 1px 0px rgba(0,0,0,0.8);
 }
 
+/* Content Cards for Interactive Section */
+.content-card {
+    background: linear-gradient(135deg, rgba(27, 11, 182, 0.15), rgba(255, 255, 255, 0.08));
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    transition: all 0.3s ease;
+}
+
+.content-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 215, 0, 0.4);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.content-card-title {
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.8);
+}
+
 /* Kahoot Game Embed */
 .kahoot-embed-container {
-    margin: 3rem 0 2rem 0;
-    padding: 2rem;
-    background: linear-gradient(135deg, rgba(27, 11, 182, 0.2), rgba(255, 255, 255, 0.1));
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 25px;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(27, 11, 182, 0.1), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
     text-align: center;
 }
 
 .kahoot-embed-title {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     color: #ffffff;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     text-shadow: 2px 2px 0px rgba(0,0,0,0.8);
 }
 
@@ -792,7 +816,7 @@ body {
     position: relative;
     width: 100%;
     height: 0;
-    padding-top: 56.25%; /* 16:9 aspect ratio */
+    padding-top: 45%; /* Reduced from 56.25% for more compact display */
     padding-bottom: 0;
     overflow: hidden;
 }
@@ -831,42 +855,24 @@ body {
 
 /* Responsive adjustments for Video and Kahoot */
 @media (max-width: 768px) {
+    .section {
+        min-height: 80vh; /* Even more compact on tablets */
+        padding: 2rem 1.5rem;
+    }
+    
     .video-player {
-        height: 300px;
+        height: 250px;
         max-width: 100%;
     }
     
-    .kahoot-embed-container {
-        padding: 1.5rem;
-        margin: 2rem 0 1.5rem 0;
-    }
-    
-    .kahoot-embed-title {
-        font-size: 1.5rem;
-    }
-    
-    .kahoot-embed-wrapper iframe {
-        height: 400px;
-    }
-    
-    .canva-embed-wrapper {
-        padding-top: 70%; /* Better aspect ratio for tablets */
-    }
-    
-    .canva-credit {
-        font-size: 0.8rem;
-        margin-top: 0.8rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .video-player {
-        height: 250px;
-    }
-    
-    .kahoot-embed-container {
+    .content-card {
         padding: 1rem;
-        margin: 1.5rem 0 1rem 0;
+        margin: 1rem 0;
+    }
+    
+    .kahoot-embed-container {
+        padding: 0.8rem;
+        margin: 1rem 0 0.8rem 0;
     }
     
     .kahoot-embed-title {
@@ -877,29 +883,38 @@ body {
         height: 300px;
     }
     
-    .kahoot-play-button {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
-    }
-    
     .canva-embed-wrapper {
-        padding-top: 80%; /* Better mobile aspect ratio */
+        padding-top: 60%; /* More compact on tablets */
     }
     
     .canva-credit {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
         margin-top: 0.6rem;
     }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 480px) {
+    .section {
+        min-height: 70vh; /* Very compact on mobile */
+        padding: 1.5rem 1rem;
+    }
+    
     .video-player {
         height: 200px;
     }
     
-    .kahoot-embed-container {
+    .content-card {
         padding: 0.8rem;
-        margin: 1rem 0 0.8rem 0;
+        margin: 0.8rem 0;
+    }
+    
+    .content-card-title {
+        font-size: 1.3rem;
+    }
+    
+    .kahoot-embed-container {
+        padding: 0.6rem;
+        margin: 0.8rem 0 0.6rem 0;
     }
     
     .kahoot-embed-title {
@@ -916,12 +931,59 @@ body {
     }
     
     .canva-embed-wrapper {
-        padding-top: 85%; /* Even better for tiny screens */
+        padding-top: 70%; /* Compact mobile aspect ratio */
     }
     
     .canva-credit {
         font-size: 0.7rem;
         margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .section {
+        min-height: 65vh; /* Extremely compact on tiny screens */
+        padding: 1rem 0.8rem;
+    }
+    
+    .video-player {
+        height: 180px;
+    }
+    
+    .content-card {
+        padding: 0.6rem;
+        margin: 0.6rem 0;
+    }
+    
+    .content-card-title {
+        font-size: 1.2rem;
+    }
+    
+    .kahoot-embed-container {
+        padding: 0.5rem;
+        margin: 0.6rem 0 0.5rem 0;
+    }
+    
+    .kahoot-embed-title {
+        font-size: 1.1rem;
+    }
+    
+    .kahoot-embed-wrapper iframe {
+        height: 200px;
+    }
+    
+    .kahoot-play-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+    
+    .canva-embed-wrapper {
+        padding-top: 75%; /* Compact for tiny screens */
+    }
+    
+    .canva-credit {
+        font-size: 0.65rem;
+        margin-top: 0.4rem;
     }
 }
 
