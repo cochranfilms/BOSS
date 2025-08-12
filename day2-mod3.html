@@ -482,10 +482,19 @@
             if (index >= 0 && index < sections.length) {
                 const targetSection = document.getElementById(sections[index]);
                 if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    // Special handling for Canva section - scroll to top instead of center
+                    if (sections[index] === 'canva-link') {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    } else {
+                        // For other sections, use the normal center behavior
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                     currentSectionIndex = index;
                 }
             }
@@ -552,12 +561,44 @@
         // Combined scroll handling with snapping and section tracking
         let isScrolling = false;
         let scrollTimeout;
+        let isInCanvaSection = false;
 
         window.addEventListener('scroll', () => {
             if (isScrolling) return;
             
-            // Update current section index
+            // Check if we're in the Canva section
+            const canvaSection = document.getElementById('canva-link');
             const scrollPosition = window.pageYOffset + window.innerHeight / 2;
+            
+            if (canvaSection) {
+                const canvaTop = canvaSection.offsetTop;
+                const canvaBottom = canvaTop + canvaSection.offsetHeight;
+                
+                // Check if we're within the Canva section
+                if (scrollPosition >= canvaTop && scrollPosition <= canvaBottom) {
+                    isInCanvaSection = true;
+                    // Disable scroll snapping when in Canva section
+                    return;
+                } else {
+                    isInCanvaSection = false;
+                }
+            }
+            
+            // Also check if we're scrolling within the Canva iframe itself
+            const canvaIframe = document.querySelector('.canva-embed-wrapper iframe');
+            if (canvaIframe && canvaIframe.contentDocument) {
+                try {
+                    const iframeScrollTop = canvaIframe.contentDocument.documentElement.scrollTop;
+                    if (iframeScrollTop > 0) {
+                        isInCanvaSection = true;
+                        return;
+                    }
+                } catch (e) {
+                    // Cross-origin restrictions, ignore
+                }
+            }
+            
+            // Update current section index
             sections.forEach((sectionId, index) => {
                 const section = document.getElementById(sectionId);
                 if (section) {
@@ -570,47 +611,49 @@
                 }
             });
             
-            // Scroll snapping
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                const scrollPosition = window.pageYOffset + window.innerHeight / 2;
-                let closestSection = null;
-                let closestDistance = Infinity;
-                
-                sections.forEach((sectionId) => {
-                    const section = document.getElementById(sectionId);
-                    if (section) {
-                        const sectionTop = section.offsetTop;
-                        const sectionBottom = sectionTop + section.offsetHeight;
-                        const sectionCenter = sectionTop + section.offsetHeight / 2;
-                        const distance = Math.abs(scrollPosition - sectionCenter);
-                        
-                        if (distance < closestDistance) {
-                            closestDistance = distance;
-                            closestSection = sectionId;
+            // Only apply scroll snapping if NOT in Canva section
+            if (!isInCanvaSection) {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    const scrollPosition = window.pageYOffset + window.innerHeight / 2;
+                    let closestSection = null;
+                    let closestDistance = Infinity;
+                    
+                    sections.forEach((sectionId) => {
+                        const section = document.getElementById(sectionId);
+                        if (section) {
+                            const sectionTop = section.offsetTop;
+                            const sectionBottom = sectionTop + section.offsetHeight;
+                            const sectionCenter = sectionTop + section.offsetHeight / 2;
+                            const distance = Math.abs(scrollPosition - sectionCenter);
+                            
+                            if (distance < closestDistance) {
+                                closestDistance = distance;
+                                closestSection = sectionId;
+                            }
                         }
-                    }
-                });
-                
-                if (closestSection) {
-                    isScrolling = true;
-                    const targetSection = document.getElementById(closestSection);
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
                     });
                     
-                    // Update current section index
-                    const sectionIndex = sections.indexOf(closestSection);
-                    if (sectionIndex !== -1) {
-                        currentSectionIndex = sectionIndex;
+                    if (closestSection) {
+                        isScrolling = true;
+                        const targetSection = document.getElementById(closestSection);
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Update current section index
+                        const sectionIndex = sections.indexOf(closestSection);
+                        if (sectionIndex !== -1) {
+                            currentSectionIndex = sectionIndex;
+                        }
+                        
+                        setTimeout(() => {
+                            isScrolling = false;
+                        }, 1000);
                     }
-                    
-                    setTimeout(() => {
-                        isScrolling = false;
-                    }, 1000);
-                }
-            }, 150); // Small delay to allow for scroll momentum
+                }, 150); // Small delay to allow for scroll momentum
+            }
         });
 
         // Canva Presentation Enhancement
@@ -650,6 +693,24 @@
                     this.style.transform = 'translateY(0) scale(1)';
                     this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4)';
                 });
+
+                // Add scroll hint when entering Canva section
+                const canvaSection = document.getElementById('canva-link');
+                if (canvaSection) {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                // Show subtle scroll hint
+                                canvaWrapper.style.borderColor = 'rgba(255, 215, 0, 0.6)';
+                                setTimeout(() => {
+                                    canvaWrapper.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                                }, 2000);
+                            }
+                        });
+                    }, { threshold: 0.3 });
+                    
+                    observer.observe(canvaSection);
+                }
             }
         });
     </script>
