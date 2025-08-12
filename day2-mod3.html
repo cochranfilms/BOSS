@@ -274,7 +274,7 @@
                 <h3 class="kahoot-embed-title">🎯 Play the iPhone Videography Kahoot Game!</h3>
                 <div class="kahoot-embed-wrapper">
                     <iframe 
-                        src="https://create.kahoot.it/share/iphone-kahoot-game-2025-boss/e1333968-6dee-4537-9877-ae042431ca40" 
+                        src="https://play.kahoot.it/v2/lobby?quizId=e1333968-6dee-4537-9877-ae042431ca40" 
                         width="100%" 
                         height="600" 
                         frameborder="0" 
@@ -284,7 +284,7 @@
                 </div>
                 <div class="kahoot-embed-info">
                     <p>Join the game using the code above or click to play directly!</p>
-                    <a href="https://create.kahoot.it/share/iphone-kahoot-game-2025-boss/e1333968-6dee-4537-9877-ae042431ca40" 
+                    <a href="https://play.kahoot.it/v2/lobby?quizId=e1333968-6dee-4537-9877-ae042431ca40" 
                        target="_blank" 
                        class="kahoot-play-button">
                         🎮 Play Kahoot Game
@@ -605,7 +605,7 @@
         // Combined scroll handling with snapping and section tracking
         let isScrolling = false;
         let scrollTimeout;
-        let isInCanvaSection = false;
+        let isInCanvaSection = false; // Flag to disable scroll snapping in sections that need free scrolling
 
         window.addEventListener('scroll', () => {
             if (isScrolling) return;
@@ -639,6 +639,20 @@
                     }
                 } catch (e) {
                     // Cross-origin restrictions, ignore
+                }
+            }
+            
+            // Check if we're in the Kahoot section
+            const kahootSection = document.getElementById('kahoot');
+            if (kahootSection) {
+                const kahootTop = kahootSection.offsetTop;
+                const kahootBottom = kahootTop + kahootSection.offsetHeight;
+                
+                // Check if we're within the Kahoot section
+                if (scrollPosition >= kahootTop && scrollPosition <= kahootBottom) {
+                    isInCanvaSection = true; // Reuse the same flag for any section that needs free scrolling
+                    // Disable scroll snapping when in Kahoot section
+                    return;
                 }
             }
             
