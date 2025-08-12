@@ -204,6 +204,28 @@
         </div>
     </section>
 
+    <!-- Opening Video Section -->
+    <section id="opening-video" class="section">
+        <div class="section-content">
+            <h2 class="section-title" data-text="Opening Video">Opening Video</h2>
+            
+            <div class="video-container">
+                <iframe 
+                    class="video-player" 
+                    src="https://www.youtube.com/embed/rbA6_5LL8A8?autoplay=1&mute=0&controls=1&rel=0&showinfo=0" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    title="Herman J. Russell West End Academy 6th Grade Anthem">
+                </iframe>
+            </div>
+            
+            <div class="video-description">
+                <p>Watch the Herman J. Russell West End Academy 6th Grade Anthem to get inspired before diving into iPhone videography!</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Kahoot Game Section -->
     <section id="kahoot" class="section">
         <div class="section-content">
@@ -244,6 +266,29 @@
                     <div class="visual-icon" data-emoji="💡">💡</div>
                     <h3 class="visual-title">Discover Secrets</h3>
                     <p class="visual-desc">Learn hidden iPhone camera features!</p>
+                </div>
+            </div>
+
+            <!-- Kahoot Game Embed -->
+            <div class="kahoot-embed-container">
+                <h3 class="kahoot-embed-title">🎯 Play the iPhone Videography Kahoot Game!</h3>
+                <div class="kahoot-embed-wrapper">
+                    <iframe 
+                        src="https://create.kahoot.it/share/iphone-kahoot-game-2025-boss/e1333968-6dee-4537-9877-ae042431ca40" 
+                        width="100%" 
+                        height="600" 
+                        frameborder="0" 
+                        allowfullscreen
+                        title="iPhone Videography Kahoot Game">
+                    </iframe>
+                </div>
+                <div class="kahoot-embed-info">
+                    <p>Join the game using the code above or click to play directly!</p>
+                    <a href="https://kahoot.it/challenge/01234567-0123-0123-0123-0123456789ab" 
+                       target="_blank" 
+                       class="kahoot-play-button">
+                        🎮 Play Kahoot Game
+                    </a>
                 </div>
             </div>
         </div>
@@ -461,7 +506,7 @@
 
         // Arrow Key Navigation
         let isNavigating = false;
-        const sections = ['hero', 'kahoot', 'camera-mastery', 'shooting-pro', 'mobile-editing', 'canva-link'];
+        const sections = ['hero', 'opening-video', 'kahoot', 'camera-mastery', 'shooting-pro', 'mobile-editing', 'canva-link'];
         let currentSectionIndex = 0;
         
         // Module navigation
