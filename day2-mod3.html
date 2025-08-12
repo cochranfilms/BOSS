@@ -602,9 +602,18 @@
         let isScrolling = false;
         let scrollTimeout;
         let isInCanvaSection = false; // Flag to disable scroll snapping in sections that need free scrolling
+        let isPageJustLoaded = true; // Flag to prevent scroll snapping when page first loads
 
         window.addEventListener('scroll', () => {
             if (isScrolling) return;
+            
+            // Disable scroll snapping for the first few seconds after page load
+            if (isPageJustLoaded) {
+                setTimeout(() => {
+                    isPageJustLoaded = false;
+                }, 2000); // Wait 2 seconds before enabling scroll snapping
+                return;
+            }
             
             // Check if we're in the Canva section
             const canvaSection = document.getElementById('canva-link');
@@ -710,8 +719,15 @@
             }
         });
 
-        // Canva Presentation Enhancement
+        // Page load handling - ensure we start at the top
         document.addEventListener('DOMContentLoaded', function() {
+            // Force scroll to top when page loads
+            window.scrollTo(0, 0);
+            
+            // Reset current section index to hero (top)
+            currentSectionIndex = 0;
+            
+            // Canva Presentation Enhancement
             const canvaIframe = document.querySelector('.canva-embed-wrapper iframe');
             const canvaWrapper = document.querySelector('.canva-embed-wrapper');
             
@@ -736,10 +752,14 @@
                     canvaWrapper.style.opacity = '0.5';
                     canvaWrapper.style.borderColor = 'rgba(255, 0, 0, 0.3)';
                 });
-                
-
-
-
+            }
+        });
+        
+        // Additional window load event to ensure proper positioning
+        window.addEventListener('load', function() {
+            // Double-check that we're at the top
+            if (window.pageYOffset > 0) {
+                window.scrollTo(0, 0);
             }
         });
     </script>
