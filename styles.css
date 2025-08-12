@@ -43,7 +43,7 @@ body {
     max-width: 1800px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 200px 1fr 200px;
+    grid-template-columns: 200px 800px 200px;
     align-items: center;
     padding: 0 12rem;
     gap: 2rem;
@@ -76,6 +76,8 @@ body {
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     justify-self: center;
+    width: 100%;
+    min-height: 50px;
 }
 
 .nav-link {
@@ -85,10 +87,8 @@ body {
     font-weight: 500;
     transition: all 0.3s ease;
     padding: 0.6rem 1.2rem;
-    border-radius: 25px;
     position: relative;
     white-space: nowrap;
-    min-width: fit-content;
     text-align: center;
 }
 
@@ -96,6 +96,7 @@ body {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(27, 11, 182, 0.3));
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
 }
 
 /* Section Styles */
