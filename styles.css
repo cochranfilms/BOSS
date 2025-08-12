@@ -43,10 +43,10 @@ body {
     max-width: 1800px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 200px 800px 200px;
+    grid-template-columns: 250px 700px 250px;
     align-items: center;
     padding: 0 12rem;
-    gap: 2rem;
+    gap: 3rem;
 }
 
 .nav-logo img, .nav-logo-right img {
@@ -71,13 +71,13 @@ body {
     gap: 3rem;
     justify-content: center;
     flex-wrap: nowrap;
-    padding: 0.5rem 2rem;
+    padding: 1rem 3rem;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     justify-self: center;
     width: 100%;
-    min-height: 50px;
+    min-height: 60px;
 }
 
 .nav-link {
