@@ -136,10 +136,34 @@
 
         .intro-subtitle {
             font-size: 1.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             opacity: 0.9;
             font-weight: 300;
             letter-spacing: 1px;
+        }
+
+        .intro-cta {
+            margin-top: 2rem;
+        }
+
+        .enter-button {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: #ffffff;
+            border: none;
+            padding: 1.5rem 3rem;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .enter-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(135deg, #ff5252, #d63031);
         }
 
         .video-container {
@@ -213,14 +237,12 @@
         <div class="intro-particles" id="particles"></div>
         
         <div class="intro-content">
-            <div class="video-container">
-                <iframe 
-                    class="video-player" 
-                    src="https://www.youtube.com/embed/rbA6_5LL8A8?autoplay=1&mute=0&controls=1&rel=0&showinfo=0" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+            <div class="intro-title">STEM Lab Workshop</div>
+            <div class="intro-subtitle">Welcome to the future of content creation!</div>
+            <div class="intro-cta">
+                <button onclick="enterWorkshop()" class="enter-button">
+                    🚀 Enter Workshop
+                </button>
             </div>
         </div>
     </div>

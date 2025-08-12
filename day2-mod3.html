@@ -121,8 +121,7 @@
                 <li><a href="#camera-mastery" class="nav-link">Camera Mastery</a></li>
                 <li><a href="#shooting-pro" class="nav-link">Shooting Like a Pro</a></li>
                 <li><a href="#mobile-editing" class="nav-link">Mobile Editing</a></li>
-                <li><a href="#interactive-content" class="nav-link">Interactive Learning</a></li>
-                <li><a href="#canva-link" class="nav-link">Additional Resources</a></li>
+                <li><a href="#canva-link" class="nav-link">Canva Slides</a></li>
             </ul>
             <div class="nav-logo-right">
                 <img src="CCAlogo.png" alt="Course Creator Academy" class="logo">
@@ -270,7 +269,28 @@
                 </div>
             </div>
 
-
+            <!-- Kahoot Game Embed -->
+            <div class="kahoot-embed-container">
+                <h3 class="kahoot-embed-title">🎯 Play the iPhone Videography Kahoot Game!</h3>
+                <div class="kahoot-embed-wrapper">
+                    <iframe 
+                        src="https://play.kahoot.it/v2/lobby?quizId=e1333968-6dee-4537-9877-ae042431ca40" 
+                        width="100%" 
+                        height="600" 
+                        frameborder="0" 
+                        allowfullscreen
+                        title="iPhone Videography Kahoot Game">
+                    </iframe>
+                </div>
+                <div class="kahoot-embed-info">
+                    <p>Join the game using the code above or click to play directly!</p>
+                    <a href="https://play.kahoot.it/v2/lobby?quizId=e1333968-6dee-4537-9877-ae042431ca40" 
+                       target="_blank" 
+                       class="kahoot-play-button">
+                        🎮 Play Kahoot Game
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -369,14 +389,15 @@
         </div>
     </section>
 
-    <!-- Interactive Content Section -->
-    <section id="interactive-content" class="section">
+    <!-- Canva Link Section -->
+    <section id="canva-link" class="section">
         <div class="section-content">
-            <h2 class="section-title" data-text="Interactive Learning">Interactive Learning</h2>
+            <h2 class="section-title" data-text="Additional Resources">Additional Resources</h2>
             
-            <!-- Canva Presentation -->
-            <div class="content-card">
-                <h3 class="content-card-title">📊 Canva Presentation</h3>
+            <div class="highlight-box">
+                <h2>Canva Presentation Slides</h2>
+                
+                <!-- Canva Presentation Embed -->
                 <div class="canva-embed-container">
                     <div class="canva-embed-wrapper">
                         <iframe 
@@ -397,37 +418,6 @@
                 </div>
             </div>
 
-            <!-- Kahoot Game -->
-            <div class="content-card">
-                <h3 class="content-card-title">🎮 Kahoot Game</h3>
-                <div class="kahoot-embed-container">
-                    <div class="kahoot-embed-wrapper">
-                        <iframe 
-                            src="https://play.kahoot.it/v2/lobby?quizId=e1333968-6dee-4537-9877-ae042431ca40" 
-                            width="100%" 
-                            height="400" 
-                            frameborder="0" 
-                            allowfullscreen
-                            title="iPhone Videography Kahoot Game">
-                        </iframe>
-                    </div>
-                    <div class="kahoot-embed-info">
-                        <a href="https://play.kahoot.it/v2/lobby?quizId=e1333968-6dee-4537-9877-ae042431ca40" 
-                           target="_blank" 
-                           class="kahoot-play-button">
-                            🎯 Play iPhone Videography Quiz
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Additional Resources Section -->
-    <section id="canva-link" class="section">
-        <div class="section-content">
-            <h2 class="section-title" data-text="Additional Resources">Additional Resources</h2>
-            
             <div class="inspirational-quote">
                 "Your iPhone is more powerful than the cameras used to film the first Star Wars movie!"
             </div>
@@ -516,7 +506,7 @@
 
         // Arrow Key Navigation
         let isNavigating = false;
-        const sections = ['hero', 'opening-video', 'kahoot', 'camera-mastery', 'shooting-pro', 'mobile-editing', 'interactive-content', 'canva-link'];
+        const sections = ['hero', 'opening-video', 'kahoot', 'camera-mastery', 'shooting-pro', 'mobile-editing', 'canva-link'];
         let currentSectionIndex = 0;
         
         // Module navigation
@@ -615,11 +605,56 @@
         // Combined scroll handling with snapping and section tracking
         let isScrolling = false;
         let scrollTimeout;
+        let isInCanvaSection = false; // Flag to disable scroll snapping in sections that need free scrolling
 
         window.addEventListener('scroll', () => {
             if (isScrolling) return;
             
-
+            // Check if we're in the Canva section
+            const canvaSection = document.getElementById('canva-link');
+            const scrollPosition = window.pageYOffset + window.innerHeight / 2;
+            
+            if (canvaSection) {
+                const canvaTop = canvaSection.offsetTop;
+                const canvaBottom = canvaTop + canvaSection.offsetHeight;
+                
+                // Check if we're within the Canva section
+                if (scrollPosition >= canvaTop && scrollPosition <= canvaBottom) {
+                    isInCanvaSection = true;
+                    // Disable scroll snapping when in Canva section
+                    return;
+                } else {
+                    isInCanvaSection = false;
+                }
+            }
+            
+            // Also check if we're scrolling within the Canva iframe itself
+            const canvaIframe = document.querySelector('.canva-embed-wrapper iframe');
+            if (canvaIframe && canvaIframe.contentDocument) {
+                try {
+                    const iframeScrollTop = canvaIframe.contentDocument.documentElement.scrollTop;
+                    if (iframeScrollTop > 0) {
+                        isInCanvaSection = true;
+                        return;
+                    }
+                } catch (e) {
+                    // Cross-origin restrictions, ignore
+                }
+            }
+            
+            // Check if we're in the Kahoot section
+            const kahootSection = document.getElementById('kahoot');
+            if (kahootSection) {
+                const kahootTop = kahootSection.offsetTop;
+                const kahootBottom = kahootTop + kahootSection.offsetHeight;
+                
+                // Check if we're within the Kahoot section
+                if (scrollPosition >= kahootTop && scrollPosition <= kahootBottom) {
+                    isInCanvaSection = true; // Reuse the same flag for any section that needs free scrolling
+                    // Disable scroll snapping when in Kahoot section
+                    return;
+                }
+            }
             
             // Update current section index
             sections.forEach((sectionId, index) => {
@@ -634,47 +669,49 @@
                 }
             });
             
-            // Apply scroll snapping
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                const scrollPosition = window.pageYOffset + window.innerHeight / 2;
-                let closestSection = null;
-                let closestDistance = Infinity;
-                
-                sections.forEach((sectionId) => {
-                    const section = document.getElementById(sectionId);
-                    if (section) {
-                        const sectionTop = section.offsetTop;
-                        const sectionBottom = sectionTop + section.offsetHeight;
-                        const sectionCenter = sectionTop + section.offsetHeight / 2;
-                        const distance = Math.abs(scrollPosition - sectionCenter);
-                        
-                        if (distance < closestDistance) {
-                            closestDistance = distance;
-                            closestSection = sectionId;
+            // Only apply scroll snapping if NOT in Canva section
+            if (!isInCanvaSection) {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    const scrollPosition = window.pageYOffset + window.innerHeight / 2;
+                    let closestSection = null;
+                    let closestDistance = Infinity;
+                    
+                    sections.forEach((sectionId) => {
+                        const section = document.getElementById(sectionId);
+                        if (section) {
+                            const sectionTop = section.offsetTop;
+                            const sectionBottom = sectionTop + section.offsetHeight;
+                            const sectionCenter = sectionTop + section.offsetHeight / 2;
+                            const distance = Math.abs(scrollPosition - sectionCenter);
+                            
+                            if (distance < closestDistance) {
+                                closestDistance = distance;
+                                closestSection = sectionId;
+                            }
                         }
-                    }
-                });
-                
-                if (closestSection) {
-                    isScrolling = true;
-                    const targetSection = document.getElementById(closestSection);
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
                     });
                     
-                    // Update current section index
-                    const sectionIndex = sections.indexOf(closestSection);
-                    if (sectionIndex !== -1) {
-                        currentSectionIndex = sectionIndex;
+                    if (closestSection) {
+                        isScrolling = true;
+                        const targetSection = document.getElementById(closestSection);
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Update current section index
+                        const sectionIndex = sections.indexOf(closestSection);
+                        if (sectionIndex !== -1) {
+                            currentSectionIndex = sectionIndex;
+                        }
+                        
+                        setTimeout(() => {
+                            isScrolling = false;
+                        }, 1000);
                     }
-                    
-                    setTimeout(() => {
-                        isScrolling = false;
-                    }, 1000);
-                }
-            }, 150); // Small delay to allow for scroll momentum
+                }, 150); // Small delay to allow for scroll momentum
+            }
         });
 
         // Canva Presentation Enhancement
